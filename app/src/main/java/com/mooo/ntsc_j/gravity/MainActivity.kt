@@ -40,9 +40,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             val fileName = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.JAPAN).format(Date()) + ".csv"
             recDir.mkdirs()
             recStream = FileOutputStream(File(recDir, fileName), true)
-            recStream.write("Time,v0,v1,v2\r\n".toByteArray())
+            recStream.write("Time,v0,v1,v2,v\r\n".toByteArray())
 
-            Toast.makeText(this, "saving CSV to ${recDir.toString()}/$fileName", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "saving CSV to $recDir/$fileName", Toast.LENGTH_LONG).show()
 
             series.resetData(arrayOf())
             startTimeInMillis = Calendar.getInstance().timeInMillis
@@ -70,7 +70,8 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 accView.text = v.toString()
                 val time = (Calendar.getInstance().timeInMillis - startTimeInMillis) * 0.001
                 recStream.write("$time,${vs[0]},${vs[1]},${vs[2]},$v\r\n".toByteArray())
-                series.appendData(DataPoint(time, v), true, 5000)
+                series.appendData(DataPoint(time, v), true, 2000)
+                graph.viewport.setMinY(0.0)
                 graph.viewport.setMinX(0.0)
             }
         }
