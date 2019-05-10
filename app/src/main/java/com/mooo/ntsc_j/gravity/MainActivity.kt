@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
             val fileName = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.JAPAN).format(Date()) + ".csv"
             recDir.mkdirs()
             recStream = FileOutputStream(File(recDir, fileName), true)
-            recStream.write("Time,v0,v1,v2,v\r\n".toByteArray())
+            recStream.write("Time,a0,a1,a2,a\r\n".toByteArray())
 
             Toast.makeText(this, "saving CSV to $recDir/$fileName", Toast.LENGTH_LONG).show()
 
