@@ -6,10 +6,13 @@ Useful when you want to measure the gravity.
 ## How to use
 Install, launch the app and tap on the REC button to start recording.
 Tap again to stop.
+
+The data will be saved on `${Environment.getExternalStorageDirectory().path}/Gravity` (aka `/sdcard/Gravity` or `/storage/emulated/0/Gravity`).
 You may be prompted for `WRITE_EXTERNAL_STORAGE` permission.
 
 ## License
 Copyright (c) Fuga Kato 2019
+
 This work is licensed under the Apache License, version 2.0.
 See LICENSE file for details.
 
